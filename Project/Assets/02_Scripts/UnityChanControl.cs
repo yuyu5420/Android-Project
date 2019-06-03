@@ -40,7 +40,7 @@ public class UnityChanControl : MonoBehaviour
             
             dir.x = joystick.Horizontal();
             dir.z = joystick.Vertical();
-        Debug.Log(this.transform.eulerAngles.y);
+       // Debug.Log(this.transform.eulerAngles.y);
         rotation = Quaternion.Euler(0, this.transform.eulerAngles.y, 0);
         dir = rotation * dir;
         if (dir.x != 0 && dir.z != 0)
@@ -50,9 +50,9 @@ public class UnityChanControl : MonoBehaviour
             this.transform.rotation = Quaternion.Lerp(this.transform.rotation, qua, Time.deltaTime * smoothing);//四元數的插值，實現平滑過渡
             MainCamera.GetComponent<Transform>().rotation = this.transform.rotation;
             MainCamera.GetComponent<Transform>().eulerAngles = new Vector3(20.0f,MainCamera.GetComponent<Transform>().eulerAngles.y, MainCamera.GetComponent<Transform>().eulerAngles.z);
-            Debug.Log(this.transform.rotation.y);
+            /*Debug.Log(this.transform.rotation.y);
             Debug.Log(dir.x);
-            Debug.Log(dir.z);
+            Debug.Log(dir.z);*/
             UnityChanPosition = this.GetComponent<Transform>().position;
             CameraFollowVector = new Vector3(UnityChanPosition.x , 3.2f, UnityChanPosition.z);
             MainCamera.GetComponent<Transform>().position = CameraFollowVector;

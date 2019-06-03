@@ -64,6 +64,8 @@
   <ItemGroup>
     <Compile Include="Assets\02_Scripts\AnimateControl.cs" />
     <Compile Include="Assets\02_Scripts\FireSpread.cs" />
+    <Compile Include="Assets\02_Scripts\PauseGame.cs" />
+    <Compile Include="Assets\02_Scripts\ResumeGame.cs" />
     <Compile Include="Assets\02_Scripts\UnityChanControl.cs" />
     <Compile Include="Assets\02_Scripts\VirtualJoystick.cs" />
     <Compile Include="Assets\03_Models\UnityChan\Scripts\CameraController.cs" />
