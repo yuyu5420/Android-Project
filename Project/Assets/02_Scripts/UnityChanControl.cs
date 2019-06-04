@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
+using System.IO;
 
 
 public class UnityChanControl : MonoBehaviour
@@ -14,12 +16,18 @@ public class UnityChanControl : MonoBehaviour
     private Vector3 UnityChanPosition;
     private VirtualJoystick joystick;
     private Vector3 CameraFollowVector;
-    private float y = 0, yy = 0, theta = 0, A_dot_B, ALen_mul_BLen;
     private Quaternion qua, rotation;
     // Start is called before the first frame update
     void Start()
     {
+        FileStream fs = new FileStream(Application.dataPath + "/save.txt", FileMode.Open);
+        StreamReader sr = new StreamReader(fs);
+ 
         UnityChan = this.GetComponent<CharacterController>();
+        UnityChanPosition = this.GetComponent<Transform>().position;
+        this.transform.position = new Vector3(Convert.ToSingle(sr.ReadLine()), UnityChanPosition.y, Convert.ToSingle(sr.ReadLine()));
+        fs.Close();
+        Debug.Log(UnityChanPosition.x);
         joystick = BackgroundImage.GetComponent<VirtualJoystick>();
         MainCamera.GetComponent<Transform>().rotation = this.transform.rotation;
         MainCamera.GetComponent<Transform>().eulerAngles = new Vector3(20.0f, MainCamera.GetComponent<Transform>().eulerAngles.y, MainCamera.GetComponent<Transform>().eulerAngles.z);
@@ -60,42 +68,6 @@ public class UnityChanControl : MonoBehaviour
 
         }
        
-        /* Debug.Log("dirx=" + dir.x);
-         Debug.Log("dirz=" + dir.z);
-         Vector2 A = new Vector2(dir.x, dir.z);
-         Vector2 B = new Vector2(1, 0);
-         A_dot_B = Vector2.Dot(A, B);
-         ALen_mul_BLen = A.magnitude + B.magnitude;
-         // 基本上A & B皆不應該為零，就略過檢查分母為零的狀況
-         if(ALen_mul_BLen != 0) {
-
-             theta = (float)Math.Acos(A_dot_B / ALen_mul_BLen);
-             Debug.Log("theta=" + theta);
-             y = (float)(theta * 180.0 / Math.PI);
-             Debug.Log(y);
-         }
-
-
-         moveDirection = new Vector3((float)(Math.Cos(theta) * Math.Abs(dir.x)), 0, (float)(Math.Sin(theta)* Math.Abs(dir.z)));
-           moveDirection = transform.TransformDirection(moveDirection);
-       y = (float)(theta / Math.PI * 180.0 * Time.deltaTime);
-
-       UnityChan.Move(moveDirection * Time.deltaTime);*/
-
-        //  }
-        /* 
-         if (y != 0)
-         {transform.Rotate(0, 45, 0);
-             
-             MainCamera.GetComponent<Transform>().Rotate(0, y, 0);
-
-             
-             yy += y;
-             if (yy >= 360) yy -= 360;
-             
-             
-         }
-
-     */
+        
     }
 }

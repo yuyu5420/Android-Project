@@ -66,6 +66,7 @@
     <Compile Include="Assets\02_Scripts\FireSpread.cs" />
     <Compile Include="Assets\02_Scripts\PauseGame.cs" />
     <Compile Include="Assets\02_Scripts\ResumeGame.cs" />
+    <Compile Include="Assets\02_Scripts\SaveGame.cs" />
     <Compile Include="Assets\02_Scripts\UnityChanControl.cs" />
     <Compile Include="Assets\02_Scripts\VirtualJoystick.cs" />
     <Compile Include="Assets\03_Models\UnityChan\Scripts\CameraController.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Assets\03_Models\UnityChan\Scripts\UnityChanControlScriptWithRgidBody.cs" />
     <None Include="Assets\03_Models\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eye.shader" />
     <None Include="Assets\03_Models\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />
+    <None Include="Assets\save.txt" />
     <None Include="Assets\03_Models\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_fuku_ds.shader" />
     <None Include="Assets\03_Models\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eye_blend.shader" />
     <None Include="Assets\03_Models\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hair_ds.shader" />
