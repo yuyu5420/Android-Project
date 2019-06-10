@@ -24,10 +24,11 @@ public class UnityChanControl : MonoBehaviour
         StreamReader sr = new StreamReader(fs);
  
         UnityChan = this.GetComponent<CharacterController>();
-        UnityChanPosition = this.GetComponent<Transform>().position;
-        this.transform.position = new Vector3(Convert.ToSingle(sr.ReadLine()), UnityChanPosition.y, Convert.ToSingle(sr.ReadLine()));
+        this.transform.position = new Vector3(Convert.ToSingle(sr.ReadLine()), Convert.ToSingle(sr.ReadLine()), Convert.ToSingle(sr.ReadLine()));
+        this.transform.rotation = QuaternionParse(sr.ReadLine());
+        sr.Close();
         fs.Close();
-        Debug.Log(UnityChanPosition.x);
+        Debug.Log(this.transform.position.x);
         joystick = BackgroundImage.GetComponent<VirtualJoystick>();
         MainCamera.GetComponent<Transform>().rotation = this.transform.rotation;
         MainCamera.GetComponent<Transform>().eulerAngles = new Vector3(20.0f, MainCamera.GetComponent<Transform>().eulerAngles.y, MainCamera.GetComponent<Transform>().eulerAngles.z);
@@ -69,5 +70,12 @@ public class UnityChanControl : MonoBehaviour
         }
        
         
+    }
+
+    Quaternion QuaternionParse(string name)
+    {
+        name = name.Replace("(", "").Replace(")", "");
+        string[] s = name.Split(',');
+        return new Quaternion(float.Parse(s[0]), float.Parse(s[1]), float.Parse(s[2]), float.Parse(s[3]));
     }
 }

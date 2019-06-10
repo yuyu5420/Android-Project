@@ -13,19 +13,21 @@ public class SaveGame : MonoBehaviour
     {
         Button btn = this.GetComponent<Button>();
         btn.onClick.AddListener(OnClick);
-        UnityChanPosition = UnityChan.GetComponent<Transform>().position;
+        
     }
     
     private void OnClick()
     {
         Debug.Log("Button Clicked.SAVE.");
-        if (System.IO.File.Exists(Application.dataPath + "/save.txt"))
-            System.IO.File.Delete(Application.dataPath + "/save.txt");
-
+        /* if (System.IO.File.Exists(Application.dataPath + "/save.txt"))
+            System.IO.File.Delete(Application.dataPath + "/save.txt");*/
+        UnityChanPosition = UnityChan.GetComponent<Transform>().position;
         FileStream fs = new FileStream(Application.dataPath + "/save.txt", FileMode.Create);
         StreamWriter sw = new StreamWriter(fs);
         sw.WriteLine(UnityChanPosition.x);
         sw.WriteLine(UnityChanPosition.y);
+        sw.WriteLine(UnityChanPosition.z);
+        sw.WriteLine(UnityChan.GetComponent<Transform>().rotation);
         sw.Close();
         fs.Close();
 
