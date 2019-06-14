@@ -25,14 +25,16 @@ public class UnityChanControl : MonoBehaviour
             {
                 FileStream fs = new FileStream(Application.persistentDataPath + "/save.txt", FileMode.Open);
                 StreamReader sr = new StreamReader(fs);
+                this.transform.position = new Vector3(Convert.ToSingle(sr.ReadLine()), Convert.ToSingle(sr.ReadLine()), Convert.ToSingle(sr.ReadLine()));
+                this.transform.rotation = QuaternionParse(sr.ReadLine());
+                sr.Close();
+                fs.Close();
             }
             
 
         UnityChan = this.GetComponent<CharacterController>();
-        this.transform.position = new Vector3(Convert.ToSingle(sr.ReadLine()), Convert.ToSingle(sr.ReadLine()), Convert.ToSingle(sr.ReadLine()));
-        this.transform.rotation = QuaternionParse(sr.ReadLine());
-        sr.Close();
-        fs.Close();
+        
+        
         Debug.Log(this.transform.position.x);
         joystick = BackgroundImage.GetComponent<VirtualJoystick>();
         MainCamera.GetComponent<Transform>().rotation = this.transform.rotation;

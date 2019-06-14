@@ -30,15 +30,13 @@ ScriptsOnlyBuild:
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
-    - UnityEngine.EventSystems.EventSystem
-    - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
     - UnityEngine.UI.Text
   sceneClasses:
-    Assets/01_Scences/Demo.unity:
+    Assets/01_Scences/Map.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -86,37 +84,33 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9490}
     - Class: 114
-      Script: {instanceID: 9496}
-    - Class: 114
       Script: {instanceID: 9502}
     - Class: 114
       Script: {instanceID: 9510}
-    - Class: 114
-      Script: {instanceID: 9546}
     - Class: 114
       Script: {instanceID: 9548}
     - Class: 114
       Script: {instanceID: 9754}
     - Class: 114
-      Script: {instanceID: 9870}
+      Script: {instanceID: 9768}
     - Class: 114
-      Script: {instanceID: 9914}
+      Script: {instanceID: 9872}
     - Class: 114
-      Script: {instanceID: 10086}
+      Script: {instanceID: 9916}
     - Class: 114
-      Script: {instanceID: 10126}
+      Script: {instanceID: 10040}
     - Class: 114
-      Script: {instanceID: 10166}
+      Script: {instanceID: 10090}
     - Class: 114
-      Script: {instanceID: 10268}
+      Script: {instanceID: 10130}
     - Class: 114
-      Script: {instanceID: 10704}
+      Script: {instanceID: 10170}
     - Class: 114
-      Script: {instanceID: 13904}
+      Script: {instanceID: 10272}
     - Class: 114
-      Script: {instanceID: 15234}
+      Script: {instanceID: 10708}
     - Class: 114
-      Script: {instanceID: 26576}
+      Script: {instanceID: 14306}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
@@ -145,7 +139,7 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 258
       Script: {instanceID: 0}
-    Assets/FacebookSDK/Examples/AccessTokenMenu.unity:
+    Assets/03_Models/FacebookSDK/Examples/AccessTokenMenu.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -176,7 +170,7 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 258
       Script: {instanceID: 0}
-    Assets/FacebookSDK/Examples/AppEvents.unity:
+    Assets/03_Models/FacebookSDK/Examples/AppEvents.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -207,7 +201,7 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 258
       Script: {instanceID: 0}
-    Assets/FacebookSDK/Examples/AppLinks.unity:
+    Assets/03_Models/FacebookSDK/Examples/AppLinks.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -229,7 +223,7 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9916}
+      Script: {instanceID: 9918}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
@@ -238,7 +232,7 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 258
       Script: {instanceID: 0}
-    Assets/FacebookSDK/Examples/AppRequests.unity:
+    Assets/03_Models/FacebookSDK/Examples/AppRequests.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -260,7 +254,7 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 10882}
+      Script: {instanceID: 10886}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
@@ -269,7 +263,7 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 258
       Script: {instanceID: 0}
-    Assets/FacebookSDK/Examples/DialogShare.unity:
+    Assets/03_Models/FacebookSDK/Examples/DialogShare.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -291,7 +285,7 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9936}
+      Script: {instanceID: 9938}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
@@ -300,7 +294,7 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 258
       Script: {instanceID: 0}
-    Assets/FacebookSDK/Examples/GraphRequest.unity:
+    Assets/03_Models/FacebookSDK/Examples/GraphRequest.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -322,7 +316,7 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9984}
+      Script: {instanceID: 9986}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
@@ -331,7 +325,7 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 258
       Script: {instanceID: 0}
-    Assets/FacebookSDK/Examples/LogView.unity:
+    Assets/03_Models/FacebookSDK/Examples/LogView.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -353,7 +347,7 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9992}
+      Script: {instanceID: 9994}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
@@ -362,7 +356,7 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 258
       Script: {instanceID: 0}
-    Assets/FacebookSDK/Examples/MainMenu.unity:
+    Assets/03_Models/FacebookSDK/Examples/MainMenu.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -378,14 +372,14 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 10188}
+      Script: {instanceID: 10192}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
-    Assets/FacebookSDK/Examples/Pay.unity:
+    Assets/03_Models/FacebookSDK/Examples/Pay.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -873,6 +867,12 @@ ScriptsOnlyBuild:
     className: AnimationTrack
   - hash:
       serializedVersion: 2
+      Hash: f45b5b96d89f5946aeb51c43e7f239f5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Setting
+  - hash:
+      serializedVersion: 2
       Hash: 00274a21279f5cb831ce20f895049e38
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -975,6 +975,12 @@ ScriptsOnlyBuild:
     className: TMP_Asset
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FacebookScript
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -1011,7 +1017,7 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: 2d524015eb54e5de0981a95cece5af52
+      Hash: d1dd3d08db7b69ed9dfe09bcdf8340b6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UnityChanControl
@@ -1297,28 +1303,16 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: FacebookScript
-  - hash:
-      serializedVersion: 2
-      Hash: f45b5b96d89f5946aeb51c43e7f239f5
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Setting
   platform: 13
   scenePathNames:
-  - Assets/01_Scences/Demo.unity
-  - Assets/FacebookSDK/Examples/MainMenu.unity
-  - Assets/FacebookSDK/Examples/AccessTokenMenu.unity
-  - Assets/FacebookSDK/Examples/AppEvents.unity
-  - Assets/FacebookSDK/Examples/AppLinks.unity
-  - Assets/FacebookSDK/Examples/AppRequests.unity
-  - Assets/FacebookSDK/Examples/DialogShare.unity
-  - Assets/FacebookSDK/Examples/GraphRequest.unity
-  - Assets/FacebookSDK/Examples/LogView.unity
-  - Assets/FacebookSDK/Examples/Pay.unity
+  - Assets/01_Scences/Map.unity
+  - Assets/03_Models/FacebookSDK/Examples/MainMenu.unity
+  - Assets/03_Models/FacebookSDK/Examples/AccessTokenMenu.unity
+  - Assets/03_Models/FacebookSDK/Examples/AppEvents.unity
+  - Assets/03_Models/FacebookSDK/Examples/AppLinks.unity
+  - Assets/03_Models/FacebookSDK/Examples/AppRequests.unity
+  - Assets/03_Models/FacebookSDK/Examples/DialogShare.unity
+  - Assets/03_Models/FacebookSDK/Examples/GraphRequest.unity
+  - Assets/03_Models/FacebookSDK/Examples/LogView.unity
+  - Assets/03_Models/FacebookSDK/Examples/Pay.unity
   playerPath: C:/Github/Android-Project/Project/test.apk
