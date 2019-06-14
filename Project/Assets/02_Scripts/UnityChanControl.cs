@@ -12,6 +12,7 @@ public class UnityChanControl : MonoBehaviour
     private Vector3 moveDirection = Vector3.zero;
     public GameObject MainCamera;
     public GameObject BackgroundImage;
+    public float speed;
     public float smoothing;
     private Vector3 UnityChanPosition;
     private VirtualJoystick joystick;
@@ -20,9 +21,13 @@ public class UnityChanControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        FileStream fs = new FileStream(Application.dataPath + "/save.txt", FileMode.Open);
-        StreamReader sr = new StreamReader(fs);
- 
+         if (System.IO.File.Exists(Application.persistentDataPath + "/save.txt"))
+            {
+                FileStream fs = new FileStream(Application.persistentDataPath + "/save.txt", FileMode.Open);
+                StreamReader sr = new StreamReader(fs);
+            }
+            
+
         UnityChan = this.GetComponent<CharacterController>();
         this.transform.position = new Vector3(Convert.ToSingle(sr.ReadLine()), Convert.ToSingle(sr.ReadLine()), Convert.ToSingle(sr.ReadLine()));
         this.transform.rotation = QuaternionParse(sr.ReadLine());
@@ -54,7 +59,7 @@ public class UnityChanControl : MonoBehaviour
         dir = rotation * dir;
         if (dir.x != 0 && dir.z != 0)
         {
-            this.transform.Translate(dir.normalized * Time.deltaTime * 3, Space.World);
+            this.transform.Translate(dir.normalized * Time.deltaTime * speed, Space.World);
             qua = Quaternion.LookRotation(dir.normalized);//※  將Vector3型別轉換四元數型別
             this.transform.rotation = Quaternion.Lerp(this.transform.rotation, qua, Time.deltaTime * smoothing);//四元數的插值，實現平滑過渡
             MainCamera.GetComponent<Transform>().rotation = this.transform.rotation;

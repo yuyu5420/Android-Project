@@ -22,7 +22,7 @@ public class SaveGame : MonoBehaviour
         /* if (System.IO.File.Exists(Application.dataPath + "/save.txt"))
             System.IO.File.Delete(Application.dataPath + "/save.txt");*/
         UnityChanPosition = UnityChan.GetComponent<Transform>().position;
-        FileStream fs = new FileStream(Application.dataPath + "/save.txt", FileMode.Create);
+        FileStream fs = new FileStream(Application.persistentDataPath + "/save.txt", FileMode.Create);
         StreamWriter sw = new StreamWriter(fs);
         sw.WriteLine(UnityChanPosition.x);
         sw.WriteLine(UnityChanPosition.y);

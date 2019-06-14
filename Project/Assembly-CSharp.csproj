@@ -64,25 +64,24 @@
      <Compile Include="Assets\02_Scripts\Setting.cs" />
      <Compile Include="Assets\02_Scripts\UnityChanControl.cs" />
      <Compile Include="Assets\02_Scripts\VirtualJoystick.cs" />
+     <Compile Include="Assets\03_Models\FacebookSDK\Examples\Scripts\ConsoleBase.cs" />
+     <Compile Include="Assets\03_Models\FacebookSDK\Examples\Scripts\LogView.cs" />
+     <Compile Include="Assets\03_Models\FacebookSDK\Examples\Scripts\MenuBase.cs" />
+     <Compile Include="Assets\03_Models\FacebookSDK\Examples\Scripts\SubMenus\AccessTokenMenu.cs" />
+     <Compile Include="Assets\03_Models\FacebookSDK\Examples\Scripts\SubMenus\AppEvents.cs" />
+     <Compile Include="Assets\03_Models\FacebookSDK\Examples\Scripts\SubMenus\AppLinks.cs" />
+     <Compile Include="Assets\03_Models\FacebookSDK\Examples\Scripts\SubMenus\AppRequests.cs" />
+     <Compile Include="Assets\03_Models\FacebookSDK\Examples\Scripts\SubMenus\DialogShare.cs" />
+     <Compile Include="Assets\03_Models\FacebookSDK\Examples\Scripts\SubMenus\GraphRequest.cs" />
+     <Compile Include="Assets\03_Models\FacebookSDK\Examples\Scripts\SubMenus\MainMenu.cs" />
+     <Compile Include="Assets\03_Models\FacebookSDK\Examples\Scripts\SubMenus\Pay.cs" />
      <Compile Include="Assets\03_Models\UnityChan\Scripts\CameraController.cs" />
      <Compile Include="Assets\03_Models\UnityChan\Scripts\IdleChanger.cs" />
      <Compile Include="Assets\03_Models\UnityChan\Scripts\SceneLoader.cs" />
      <Compile Include="Assets\03_Models\UnityChan\Scripts\ThirdPersonCamera.cs" />
      <Compile Include="Assets\03_Models\UnityChan\Scripts\UnityChanControlScriptWithRgidBody.cs" />
-     <Compile Include="Assets\FacebookSDK\Examples\Scripts\ConsoleBase.cs" />
-     <Compile Include="Assets\FacebookSDK\Examples\Scripts\LogView.cs" />
-     <Compile Include="Assets\FacebookSDK\Examples\Scripts\MenuBase.cs" />
-     <Compile Include="Assets\FacebookSDK\Examples\Scripts\SubMenus\AccessTokenMenu.cs" />
-     <Compile Include="Assets\FacebookSDK\Examples\Scripts\SubMenus\AppEvents.cs" />
-     <Compile Include="Assets\FacebookSDK\Examples\Scripts\SubMenus\AppLinks.cs" />
-     <Compile Include="Assets\FacebookSDK\Examples\Scripts\SubMenus\AppRequests.cs" />
-     <Compile Include="Assets\FacebookSDK\Examples\Scripts\SubMenus\DialogShare.cs" />
-     <Compile Include="Assets\FacebookSDK\Examples\Scripts\SubMenus\GraphRequest.cs" />
-     <Compile Include="Assets\FacebookSDK\Examples\Scripts\SubMenus\MainMenu.cs" />
-     <Compile Include="Assets\FacebookSDK\Examples\Scripts\SubMenus\Pay.cs" />
      <None Include="Assets\03_Models\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eye.shader" />
      <None Include="Assets\03_Models\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />
-     <None Include="Assets\save.txt" />
      <None Include="Assets\03_Models\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_fuku_ds.shader" />
      <None Include="Assets\03_Models\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eye_blend.shader" />
      <None Include="Assets\03_Models\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hair_ds.shader" />
@@ -91,7 +90,7 @@
      <None Include="Assets\03_Models\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eyelash_blend.shader" />
      <None Include="Assets\03_Models\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hada.shader" />
      <None Include="Assets\03_Models\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hada_blend.shader" />
-     <None Include="Assets\FacebookSDK\link.xml" />
+     <None Include="Assets\03_Models\FacebookSDK\link.xml" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Github/Android-Project/Project/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
@@ -290,18 +289,6 @@
  <Reference Include="nunit.framework">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.0f2/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
  </Reference>
- <Reference Include="Facebook.Unity">
- <HintPath>C:/Github/Android-Project/Project/Assets/FacebookSDK/Plugins/Facebook.Unity.dll</HintPath>
- </Reference>
- <Reference Include="Facebook.Unity.Gameroom">
- <HintPath>C:/Github/Android-Project/Project/Assets/FacebookSDK/Plugins/Gameroom/Facebook.Unity.Gameroom.dll</HintPath>
- </Reference>
- <Reference Include="FacebookNamedPipeClient">
- <HintPath>C:/Github/Android-Project/Project/Assets/FacebookSDK/Plugins/Gameroom/FacebookNamedPipeClient.dll</HintPath>
- </Reference>
- <Reference Include="Facebook.Unity.Settings">
- <HintPath>C:/Github/Android-Project/Project/Assets/FacebookSDK/Plugins/Settings/Facebook.Unity.Settings.dll</HintPath>
- </Reference>
  <Reference Include="Unity.Analytics.Editor">
  <HintPath>C:/Github/Android-Project/Project/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
  </Reference>
@@ -310,6 +297,18 @@
  </Reference>
  <Reference Include="Unity.Analytics.Tracker">
  <HintPath>C:/Github/Android-Project/Project/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
+ </Reference>
+ <Reference Include="Facebook.Unity.Settings">
+ <HintPath>C:/Github/Android-Project/Project/Assets/03_Models/FacebookSDK/Plugins/Settings/Facebook.Unity.Settings.dll</HintPath>
+ </Reference>
+ <Reference Include="FacebookNamedPipeClient">
+ <HintPath>C:/Github/Android-Project/Project/Assets/03_Models/FacebookSDK/Plugins/Gameroom/FacebookNamedPipeClient.dll</HintPath>
+ </Reference>
+ <Reference Include="Facebook.Unity.Gameroom">
+ <HintPath>C:/Github/Android-Project/Project/Assets/03_Models/FacebookSDK/Plugins/Gameroom/Facebook.Unity.Gameroom.dll</HintPath>
+ </Reference>
+ <Reference Include="Facebook.Unity">
+ <HintPath>C:/Github/Android-Project/Project/Assets/03_Models/FacebookSDK/Plugins/Facebook.Unity.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.0f2/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
