@@ -18,6 +18,7 @@ public class UnityChanControl : MonoBehaviour
     private VirtualJoystick joystick;
     private Vector3 CameraFollowVector;
     private Quaternion qua, rotation;
+    private bool run = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,7 +50,7 @@ public class UnityChanControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
       //  if (this.GetComponent<AnimateControl>().WalkF_bool == true)
      //   {
             Vector3 dir = Vector3.zero;
@@ -59,7 +60,7 @@ public class UnityChanControl : MonoBehaviour
        // Debug.Log(this.transform.eulerAngles.y);
         rotation = Quaternion.Euler(0, this.transform.eulerAngles.y, 0);
         dir = rotation * dir;
-        if (dir.x != 0 && dir.z != 0)
+        if (dir.x != 0 && dir.z != 0 && run)
         {
             this.transform.Translate(dir.normalized * Time.deltaTime * speed, Space.World);
             qua = Quaternion.LookRotation(dir.normalized);//※  將Vector3型別轉換四元數型別
@@ -76,9 +77,25 @@ public class UnityChanControl : MonoBehaviour
 
         }
        
-        
     }
 
+    void OnTriggerExit(Collider collisio) {
+	    run = true;
+        Debug.Log("EXIT");
+    }
+    void OnTriggerEnter(Collider collision)
+    {
+        Debug.Log(collision.gameObject.name);
+        if(collision.gameObject.name == "Coin(Clone)"){
+            Destroy(collision.gameObject);
+        }
+        else
+        {
+            //run = false;
+        }
+        
+    }
+    
     Quaternion QuaternionParse(string name)
     {
         name = name.Replace("(", "").Replace(")", "");
