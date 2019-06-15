@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CreateCoins : MonoBehaviour
 {
-    public CharacterController UnityChan;
+    public GameObject UnityChan;
     private Vector3 UnityChanPosition;
     void Start(){
         this.Invoke("Create", 3f);

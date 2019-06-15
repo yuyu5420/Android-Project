@@ -8,7 +8,6 @@ using System.IO;
 
 public class UnityChanControl : MonoBehaviour
 {
-    private CharacterController UnityChan;
     private Vector3 moveDirection = Vector3.zero;
     public GameObject MainCamera;
     public GameObject BackgroundImage;
@@ -23,18 +22,14 @@ public class UnityChanControl : MonoBehaviour
     void Start()
     {
          if (System.IO.File.Exists(Application.persistentDataPath + "/save.txt"))
-            {
+        {
                 FileStream fs = new FileStream(Application.persistentDataPath + "/save.txt", FileMode.Open);
                 StreamReader sr = new StreamReader(fs);
                 this.transform.position = new Vector3(Convert.ToSingle(sr.ReadLine()), Convert.ToSingle(sr.ReadLine()), Convert.ToSingle(sr.ReadLine()));
                 this.transform.rotation = QuaternionParse(sr.ReadLine());
                 sr.Close();
                 fs.Close();
-            }
-            
-
-        UnityChan = this.GetComponent<CharacterController>();
-        
+        }
         
         Debug.Log(this.transform.position.x);
         joystick = BackgroundImage.GetComponent<VirtualJoystick>();
