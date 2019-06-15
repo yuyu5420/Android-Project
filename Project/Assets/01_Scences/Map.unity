@@ -3720,6 +3720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2feaa7ad8cc2acf4cbd95cd823f84c81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BackgroundImage: {fileID: 1311483215}
   WalkF_bool: 1
 --- !u!54 &814136023
 Rigidbody:
