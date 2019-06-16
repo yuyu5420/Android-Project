@@ -11,10 +11,12 @@ public class UnityChanControl : MonoBehaviour
     private Vector3 moveDirection = Vector3.zero;
     public GameObject MainCamera;
     public GameObject BackgroundImage;
+    public GameObject BackgroundImage2;
     public float speed;
     public float smoothing;
     private Vector3 UnityChanPosition;
     private VirtualJoystick joystick;
+    private VirtualJoystick2 joystick2;
     private Vector3 CameraFollowVector;
     private Quaternion qua, rotation;
     private bool run = true;
@@ -31,8 +33,8 @@ public class UnityChanControl : MonoBehaviour
                 fs.Close();
         }
         
-        Debug.Log(this.transform.position.x);
         joystick = BackgroundImage.GetComponent<VirtualJoystick>();
+        joystick2 = BackgroundImage2.GetComponent<VirtualJoystick2>();
         MainCamera.GetComponent<Transform>().rotation = this.transform.rotation;
         MainCamera.GetComponent<Transform>().eulerAngles = new Vector3(20.0f, MainCamera.GetComponent<Transform>().eulerAngles.y, MainCamera.GetComponent<Transform>().eulerAngles.z);
 
@@ -48,19 +50,25 @@ public class UnityChanControl : MonoBehaviour
         
       //  if (this.GetComponent<AnimateControl>().WalkF_bool == true)
      //   {
-            Vector3 dir = Vector3.zero;
-            
-            dir.x = joystick.Horizontal();
-            dir.z = joystick.Vertical();
-       // Debug.Log(this.transform.eulerAngles.y);
+        Vector3 dir = Vector3.zero;
+        Vector3 dir2 = Vector3.zero;
+
+        dir2.x = joystick.Horizontal();
+        dir2.z = joystick.Vertical();
+
+        dir.x = joystick2.Horizontal();
+        dir.z = joystick2.Vertical();
+
+        //Debug.Log(this.transform.eulerAngles.y);
         rotation = Quaternion.Euler(0, this.transform.eulerAngles.y, 0);
         dir = rotation * dir;
         if (dir.x != 0 && dir.z != 0 && run)
         {
-            this.transform.Translate(dir.normalized * Time.deltaTime * speed, Space.World);
+            
+            //this.transform.Translate(dir.normalized * Time.deltaTime * speed, Space.World);
             qua = Quaternion.LookRotation(dir.normalized);//※  將Vector3型別轉換四元數型別
-            this.transform.rotation = Quaternion.Lerp(this.transform.rotation, qua, Time.deltaTime * smoothing);//四元數的插值，實現平滑過渡
-            MainCamera.GetComponent<Transform>().rotation = this.transform.rotation;
+            //this.transform.rotation = Quaternion.Lerp(this.transform.rotation, qua, Time.deltaTime * smoothing);//四元數的插值，實現平滑過渡
+            MainCamera.GetComponent<Transform>().rotation = Quaternion.Lerp(MainCamera.GetComponent<Transform>().rotation, qua, Time.deltaTime * smoothing);
             MainCamera.GetComponent<Transform>().eulerAngles = new Vector3(20.0f,MainCamera.GetComponent<Transform>().eulerAngles.y, MainCamera.GetComponent<Transform>().eulerAngles.z);
             /*Debug.Log(this.transform.rotation.y);
             Debug.Log(dir.x);
