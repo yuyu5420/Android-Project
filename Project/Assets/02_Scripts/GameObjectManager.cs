@@ -12,6 +12,7 @@ public class GameObjectManager : MonoBehaviour
    static GameObjectManager instance;
    public GameObject MainCamera;
    public GameObject JoyStick;
+   public GameObject JoyStick2;
    public GameObject FB;
    public GameObject UnityChan;
    public GameObject Setting;
@@ -26,6 +27,7 @@ public class GameObjectManager : MonoBehaviour
             DontDestroyOnLoad(MainCamera);
             DontDestroyOnLoad(Coin);
             DontDestroyOnLoad(JoyStick);
+            DontDestroyOnLoad(JoyStick2);
             DontDestroyOnLoad(FB);
             DontDestroyOnLoad(UnityChan);
             DontDestroyOnLoad(Setting);
