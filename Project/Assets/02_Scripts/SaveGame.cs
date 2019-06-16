@@ -33,10 +33,6 @@ public class SaveGame : MonoBehaviour
         sw.WriteLine(SceneManager.GetActiveScene().name);
         sw.Close();
         fs.Close();
-
-        string sceneName = PlayerPrefs.GetString("previousScene");
-        SceneManager.LoadScene(sceneName);
-
         GameObject.Destroy(GameObject.Find("Camera2"));
         GameObject.Destroy(GameObject.Find("VirtualJoystick"));
         GameObject.Destroy(GameObject.Find("Coin"));
@@ -45,6 +41,7 @@ public class SaveGame : MonoBehaviour
         GameObject.Destroy(GameObject.Find("Setting"));
         GameObject.Destroy(GameObject.Find("Pause"));
         GameObject.Destroy(GameObject.Find("GameController"));
+        Application.Quit();
     }
 
 }
