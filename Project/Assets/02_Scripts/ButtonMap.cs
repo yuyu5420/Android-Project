@@ -14,6 +14,7 @@ public class ButtonMap: MonoBehaviour
     public GameObject joystick;
     public GameObject pause;
     public GameObject set;
+    public GameObject btn;
 
     void Start()
     {
@@ -29,6 +30,7 @@ public class ButtonMap: MonoBehaviour
         joystick.SetActive(true);
         controller.SetActive(true);
         FB.SetActive(true);
+        btn.SetActive(true);
         //set.SetActive(true);
         //pause.SetActive(true);
         Time.timeScale = 1;

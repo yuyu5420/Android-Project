@@ -18,6 +18,8 @@ public class GameObjectManager : MonoBehaviour
    public GameObject Setting;
     public GameObject Coin;
     public GameObject Pause;
+    public GameObject button;
+
 
     void Awake () {
         if (instance==null)
@@ -25,6 +27,8 @@ public class GameObjectManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(this);
             DontDestroyOnLoad(MainCamera);
+            DontDestroyOnLoad(Coin);
+            DontDestroyOnLoad(button);
             DontDestroyOnLoad(Coin);
             DontDestroyOnLoad(JoyStick);
             DontDestroyOnLoad(JoyStick2);
