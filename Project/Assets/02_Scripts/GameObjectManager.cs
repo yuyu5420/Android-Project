@@ -1,0 +1,37 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System;
+using UnityEngine.UI;
+using System.IO;
+using UnityEngine.SceneManagement;
+
+
+public class GameObjectManager : MonoBehaviour
+{
+   static GameObjectManager instance;
+   public GameObject MainCamera;
+   public GameObject JoyStick;
+   public GameObject FB;
+   public GameObject UnityChan;
+   public GameObject Setting;
+    public GameObject Coin;
+    public GameObject Pause;
+
+    void Awake () {
+        if (instance==null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+            DontDestroyOnLoad(MainCamera);
+            DontDestroyOnLoad(Coin);
+            DontDestroyOnLoad(JoyStick);
+            DontDestroyOnLoad(FB);
+            DontDestroyOnLoad(UnityChan);
+            DontDestroyOnLoad(Setting);
+            DontDestroyOnLoad(Pause);
+
+        }
+
+}
+}

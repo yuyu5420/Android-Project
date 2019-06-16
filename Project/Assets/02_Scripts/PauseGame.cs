@@ -5,8 +5,12 @@ using UnityEngine;
 public class PauseGame : MonoBehaviour
 {
     public Transform canvas;
-    private CharacterController UnityChan;
 
+    private void Start()
+    {
+        canvas.gameObject.SetActive(false);
+        Time.timeScale = 1;
+    }
     // Update is called once per frame
     void Update()
     {

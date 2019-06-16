@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 using System.IO;
-
+using UnityEngine.SceneManagement;
 
 public class UnityChanControl : MonoBehaviour
 {
@@ -21,12 +21,17 @@ public class UnityChanControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-         if (System.IO.File.Exists(Application.persistentDataPath + "/save.txt"))
+        
+         if (PlayerPrefs.GetString("step") != "1" && System.IO.File.Exists(Application.persistentDataPath + "/save.txt"))
         {
+
                 FileStream fs = new FileStream(Application.persistentDataPath + "/save.txt", FileMode.Open);
                 StreamReader sr = new StreamReader(fs);
                 this.transform.position = new Vector3(Convert.ToSingle(sr.ReadLine()), Convert.ToSingle(sr.ReadLine()), Convert.ToSingle(sr.ReadLine()));
                 this.transform.rotation = QuaternionParse(sr.ReadLine());
+                string floor = sr.ReadLine();
+                if(floor == "SceneMap2") SceneManager.LoadScene("SceneMap2");
+
                 sr.Close();
                 fs.Close();
         }
@@ -84,9 +89,36 @@ public class UnityChanControl : MonoBehaviour
         if(collision.gameObject.name == "Coin(Clone)"){
             Destroy(collision.gameObject);
         }
-        else
+        else if (collision.gameObject.name == "Boxshelf" && SceneManager.GetActiveScene().name == "SceneMap")
         {
-            //run = false;
+           
+            PlayerPrefs.SetString("step", "1");
+
+            SceneManager.LoadScene("SceneMap2");
+            GameObject.Find("JoystickImage").GetComponent<Image>().rectTransform.anchoredPosition = Vector3.zero;
+            this.transform.position = new Vector3(-4f, UnityChanPosition.y, -28.7f);
+            MainCamera.GetComponent<Transform>().rotation = this.transform.rotation;
+            MainCamera.GetComponent<Transform>().eulerAngles = new Vector3(20.0f, MainCamera.GetComponent<Transform>().eulerAngles.y, MainCamera.GetComponent<Transform>().eulerAngles.z);
+
+            UnityChanPosition = this.GetComponent<Transform>().position;
+            CameraFollowVector = new Vector3(UnityChanPosition.x, 3.2f, UnityChanPosition.z);
+            MainCamera.GetComponent<Transform>().position = CameraFollowVector;
+            MainCamera.GetComponent<Transform>().Translate(Vector3.back * 5);
+        }
+        else if (collision.gameObject.name == "Boxshelf" && SceneManager.GetActiveScene().name == "SceneMap2")
+        {
+       
+            PlayerPrefs.SetString("step", "1");
+            SceneManager.LoadScene("SceneMap");
+            GameObject.Find("JoystickImage").GetComponent<Image>().rectTransform.anchoredPosition = Vector3.zero;
+            this.transform.position = new Vector3(-4f, UnityChanPosition.y, -28.7f);
+            MainCamera.GetComponent<Transform>().rotation = this.transform.rotation;
+            MainCamera.GetComponent<Transform>().eulerAngles = new Vector3(20.0f, MainCamera.GetComponent<Transform>().eulerAngles.y, MainCamera.GetComponent<Transform>().eulerAngles.z);
+
+            UnityChanPosition = this.GetComponent<Transform>().position;
+            CameraFollowVector = new Vector3(UnityChanPosition.x, 3.2f, UnityChanPosition.z);
+            MainCamera.GetComponent<Transform>().position = CameraFollowVector;
+            MainCamera.GetComponent<Transform>().Translate(Vector3.back * 5);
         }
         
     }

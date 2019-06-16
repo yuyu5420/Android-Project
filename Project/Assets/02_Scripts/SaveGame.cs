@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
-    
+using UnityEngine.SceneManagement;
+
 public class SaveGame : MonoBehaviour
 {
-    public CharacterController UnityChan;
     private Vector3 UnityChanPosition;
+    public GameObject UnityChan;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -28,9 +30,21 @@ public class SaveGame : MonoBehaviour
         sw.WriteLine(UnityChanPosition.y);
         sw.WriteLine(UnityChanPosition.z);
         sw.WriteLine(UnityChan.GetComponent<Transform>().rotation);
+        sw.WriteLine(SceneManager.GetActiveScene().name);
         sw.Close();
         fs.Close();
 
+        string sceneName = PlayerPrefs.GetString("previousScene");
+        SceneManager.LoadScene(sceneName);
+
+        GameObject.Destroy(GameObject.Find("Camera2"));
+        GameObject.Destroy(GameObject.Find("VirtualJoystick"));
+        GameObject.Destroy(GameObject.Find("Coin"));
+        GameObject.Destroy(GameObject.Find("FB"));
+        GameObject.Destroy(GameObject.Find("unitychan"));
+        GameObject.Destroy(GameObject.Find("Setting"));
+        GameObject.Destroy(GameObject.Find("Pause"));
+        GameObject.Destroy(GameObject.Find("GameController"));
     }
 
 }
