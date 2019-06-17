@@ -38,7 +38,7 @@ public class AnimateControl : MonoBehaviour
             this.transform.Translate(dir.normalized * Time.deltaTime * speed, Space.World);
             qua = Quaternion.LookRotation(dir.normalized);//※  將Vector3型別轉換四元數型別
             this.transform.rotation = Quaternion.Lerp(this.transform.rotation, qua, Time.deltaTime * smoothing);//四元數的插值，實現平滑過渡
-            //MainCamera.GetComponent<Transform>().rotation = Quaternion.Lerp(this.transform.rotation, qua, Time.deltaTime * smoothing);
+             MainCamera.GetComponent<Transform>().rotation = Quaternion.Lerp(MainCamera.GetComponent<Transform>().rotation, qua, Time.deltaTime * smoothing);
             MainCamera.GetComponent<Transform>().eulerAngles = new Vector3(20.0f,MainCamera.GetComponent<Transform>().eulerAngles.y, MainCamera.GetComponent<Transform>().eulerAngles.z);
             UnityChanPosition = this.GetComponent<Transform>().position;
             CameraFollowVector = new Vector3(UnityChanPosition.x , 3.2f, UnityChanPosition.z);
