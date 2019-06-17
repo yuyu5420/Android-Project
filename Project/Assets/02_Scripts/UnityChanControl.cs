@@ -14,11 +14,14 @@ public class UnityChanControl : MonoBehaviour
     public GameObject BackgroundImage2;
     public float speed;
     public float smoothing;
+    public float fireCollideDelay;
     private Vector3 UnityChanPosition;
     private VirtualJoystick joystick;
     private VirtualJoystick2 joystick2;
     private Vector3 CameraFollowVector;
     private Quaternion qua, rotation;
+    private Transform[] hp;
+    private int hpcnt;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +49,13 @@ public class UnityChanControl : MonoBehaviour
         CameraFollowVector = new Vector3(UnityChanPosition.x, 3.2f, UnityChanPosition.z);
         MainCamera.GetComponent<Transform>().position = CameraFollowVector;
         MainCamera.GetComponent<Transform>().Translate(Vector3.back * 5);
+         hp = new Transform[] {
+            gameObject.transform.Find("Cube"),
+            gameObject.transform.Find("Cube (1)"),
+            gameObject.transform.Find("Cube (2)"),
+        };
+        hpcnt = 2;
+        fireCollideDelay = -1;
     }
 
     // Update is called once per frame
@@ -81,6 +91,8 @@ public class UnityChanControl : MonoBehaviour
             MainCamera.GetComponent<Transform>().Translate(Vector3.back * 5);
 
         }
+         if(fireCollideDelay >= 0)
+            fireCollideDelay--;
     }
 
     void OnTriggerEnter(Collider collision)
@@ -115,6 +127,21 @@ public class UnityChanControl : MonoBehaviour
             MainCamera.GetComponent<Transform>().rotation = this.transform.rotation;
             MainCamera.GetComponent<Transform>().eulerAngles = new Vector3(20.0f, MainCamera.GetComponent<Transform>().eulerAngles.y, MainCamera.GetComponent<Transform>().eulerAngles.z);
 
+            UnityChanPosition = this.GetComponent<Transform>().position;
+            CameraFollowVector = new Vector3(UnityChanPosition.x, 3.2f, UnityChanPosition.z);
+            MainCamera.GetComponent<Transform>().position = CameraFollowVector;
+            MainCamera.GetComponent<Transform>().Translate(Vector3.back * 5);
+        }
+         else if(fireCollideDelay == -1 && hpcnt >= 0 && (collision.gameObject.name == "Fire" || collision.gameObject.name == "Fire(Clone)"))
+        {
+            fireCollideDelay = 60;
+            GameObject.Find("JoystickImage").GetComponent<Image>().rectTransform.anchoredPosition = Vector3.zero;
+            Debug.Log("on Fire!");
+            hp[hpcnt--].gameObject.SetActive(false);
+            Vector3 firePosition = collision.gameObject.GetComponent<Transform>().position;
+
+            this.transform.position = Vector3.LerpUnclamped(firePosition, this.transform.position, 2.5f);
+            this.transform.position = new Vector3(this.transform.position.x, UnityChanPosition.y, this.transform.position.z);
             UnityChanPosition = this.GetComponent<Transform>().position;
             CameraFollowVector = new Vector3(UnityChanPosition.x, 3.2f, UnityChanPosition.z);
             MainCamera.GetComponent<Transform>().position = CameraFollowVector;
