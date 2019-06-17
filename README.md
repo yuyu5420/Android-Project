@@ -1,9 +1,9 @@
 
 Escape++
 ===
+![](https://i.imgur.com/FA4h9AS.png)
 
-![](https://i.imgur.com/ulT7QtQ.png =150x150)
-**Escape++ ¬O¤@´Ú¯àÅı§A¸m¨­©ó¦¨¤j¸ê°T¨tÀ]¥B¼ÒÀÀ¤õ¨a°k¥ÍªºAPP!**
+**Escape++ æ˜¯ä¸€æ¬¾èƒ½è®“ä½ ç½®èº«æ–¼æˆå¤§è³‡è¨Šç³»é¤¨ä¸”æ¨¡æ“¬ç«ç½é€ƒç”Ÿçš„APP!**
 
 ## Development Platform
 
@@ -11,9 +11,9 @@ Escape++
 
 ## Contributions
 
-*  ¶À·ç³s - Character move¡BFB connection¡BCoins creation¡BUI designed.
-*  ¤ıªlİÂ - Map Construction.
-*  ªô¤l®Ë - Fire simulation.
-*  ·¨©|¿² - Scene switch¡B character collision.
+*  é»ƒç‘é€£ - Character moveã€FB connectionã€Coins creationã€UI designed.
+*  ç‹æ³“æš - Map Construction.
+*  é‚±å­æ™ - Fire simulation.
+*  æ¥Šå°šè‡» - Scene switchã€ character collision.
 
 
