@@ -1,8 +1,8 @@
+
 Escape++
 ===
 
-![](https://i.imgur.com/ulT7QtQ.png)
-
+![](https://i.imgur.com/ulT7QtQ.png =150x150)
 **Escape++ 是一款能讓你置身於成大資訊系館且模擬火災逃生的APP!**
 
 ## Development Platform
