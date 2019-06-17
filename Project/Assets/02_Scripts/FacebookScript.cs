@@ -2,11 +2,15 @@
 using UnityEngine;
 using Facebook.Unity;
 using UnityEngine.UI;
+using Facebook.MiniJSON;
+using System.Collections;
  
 public class FacebookScript : MonoBehaviour {
  
    // public Text FriendsText;
- 
+    public GameObject login;
+    public GameObject logout;
+    public GameObject head;
     private void Awake()
     {
         if (!FB.IsInitialized)
@@ -32,20 +36,61 @@ public class FacebookScript : MonoBehaviour {
  
 
     #region Login / Logout
-    public void Check(){
-
-        
+    public void CheckLogin(){
+        if(FB.IsLoggedIn){
+            login.SetActive(false);
+            logout.SetActive(true);
+            head.SetActive(true);
+        }
+        else{
+            login.SetActive(true);
+            logout.SetActive(false);
+            head.SetActive(false);
+        }
     }
     public void FacebookLogin()
     {
-        var permissions = new List<string>() { "public_profile", "email", "user_friends" };
-        FB.LogInWithReadPermissions(permissions);
+         var permissions = new List<string>() { "public_profile", "email", "user_friends" };
+        FB.LogInWithReadPermissions(permissions, AuthCallBack);
+        CheckLogin();
     }
  
     public void FacebookLogout()
     {
         FB.LogOut();
+        CheckLogin();
+         CheckLogin();
+          CheckLogin();
     }
+
+    void AuthCallBack(IResult result){ 
+        if(result.Error != null){
+            Debug.Log(result.Error);
+        }
+        else{
+            DealWithMenu(FB.IsLoggedIn);
+        }
+        
+    }
+    void DealWithMenu(bool IsLogged) {
+        if(IsLogged){
+            head.SetActive(true);
+            FB.API("me/picture?type=square&height=128&width=128", HttpMethod.GET, DisplayHead);
+        }
+        else{
+            head.SetActive(false);
+        }
+    }
+
+    void DisplayHead(IGraphResult result){
+        if(result.Texture != null){
+            Debug.Log("WTF");
+            Image ProfilePic = head.GetComponent<Image>();
+            ProfilePic.sprite = Sprite.Create(result.Texture, new Rect(0,0,128,128), new Vector2 ());
+        }
+        CheckLogin();
+    }
+  
     #endregion
  
     public void FacebookShare()
@@ -54,6 +99,7 @@ public class FacebookScript : MonoBehaviour {
             "Good programming tutorials lol!",
             new System.Uri("https://resocoder.com/wp-content/uploads/2017/01/logoRound512.png"));
     }
+    
  
     #region Inviting
     public void FacebookGameRequest()

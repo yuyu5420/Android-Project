@@ -10,7 +10,7 @@ EditorBuildSettings:
     guid: eec8c72f07f770849997a6292393d89d
   - enabled: 1
     path: Assets/01_Scences/SceneMap.unity
-    guid: a894c6f8a16c5a34b8aab645dd9d8dba
+    guid: d912b3c4d2aa9704aac027e3191b2520
   - enabled: 1
     path: Assets/01_Scences/SceneMap2.unity
     guid: db99074e9e6cf1342b5060594004e460
