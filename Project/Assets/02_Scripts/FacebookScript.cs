@@ -30,7 +30,12 @@ public class FacebookScript : MonoBehaviour {
             FB.ActivateApp();
     }
  
+
     #region Login / Logout
+    public void Check(){
+
+        
+    }
     public void FacebookLogin()
     {
         var permissions = new List<string>() { "public_profile", "email", "user_friends" };
