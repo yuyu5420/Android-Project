@@ -18,6 +18,7 @@ public class UnityChanControl : MonoBehaviour
     public float fireBounceDistance;
     public float fireWallMedium;
     public int Coin_save;
+    public GameObject RealGold;
     private float fireCollideDelay;
     public int saveInterval = 30;
     private Vector3 UnityChanPosition;
@@ -136,6 +137,7 @@ public class UnityChanControl : MonoBehaviour
             Destroy(collision.gameObject);
             Instantiate(coinsound, UnityChanPosition, Quaternion.identity); 
             coins_number++;
+            Coin_save++;
          }
         else if (collision.gameObject.name == "Boxshelf" && SceneManager.GetActiveScene().name == "SceneMap")
         {
@@ -209,6 +211,7 @@ public class UnityChanControl : MonoBehaviour
             Time.timeScale = 0;
             CoinText.GetComponent<Text>().text = Convert.ToString(coins_number);
             Coin_save += coins_number;
+            RealGold..GetComponent<Text>().text = Coin_save;
 
        }
          else if(fireCollideDelay == -1  && (collision.gameObject.name == "Fire" || collision.gameObject.name == "Fire(Clone)"))
