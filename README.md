@@ -11,7 +11,7 @@ Escape++
 
 ## Contributions
 
-*  黃瑞連 - Character move、FB connection、Coins creation、UI designed.
+*  黃瑞連 - Character move、FB connection、Sound Effect、UI design.
 *  王泓暐 - Map Construction.
 *  邱子晏 - Fire simulation.
 *  楊尚臻 - Scene switch、 character collision.
