@@ -19,9 +19,9 @@ public class GameObjectManager : MonoBehaviour
     public GameObject Coin;
     public GameObject Pause;
     public GameObject button;
-    public GameObject coinsound;
+    public GameObject coinsound, LoseSound, WinSound, AttackSound;
     public GameObject Success;
-    public GameObject cube1, cube2;
+    public GameObject cube1, cube2,goal1, goal2, goal3;
 
 
     void Awake () {
@@ -40,9 +40,15 @@ public class GameObjectManager : MonoBehaviour
             DontDestroyOnLoad(Setting);
             DontDestroyOnLoad(Pause);
              DontDestroyOnLoad(coinsound);
+             DontDestroyOnLoad(LoseSound);
+             DontDestroyOnLoad(WinSound);
+             DontDestroyOnLoad(AttackSound);
              DontDestroyOnLoad(Success);
              DontDestroyOnLoad(cube1);
              DontDestroyOnLoad(cube2);
+             DontDestroyOnLoad(goal1);
+             DontDestroyOnLoad(goal2);
+             DontDestroyOnLoad(goal3);
 
         }
 
