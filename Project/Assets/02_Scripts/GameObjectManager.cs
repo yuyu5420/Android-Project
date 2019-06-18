@@ -19,6 +19,8 @@ public class GameObjectManager : MonoBehaviour
     public GameObject Coin;
     public GameObject Pause;
     public GameObject button;
+    public GameObject coinsound;
+    public GameObject Success;
 
 
     void Awake () {
@@ -36,6 +38,8 @@ public class GameObjectManager : MonoBehaviour
             DontDestroyOnLoad(UnityChan);
             DontDestroyOnLoad(Setting);
             DontDestroyOnLoad(Pause);
+             DontDestroyOnLoad(coinsound);
+             DontDestroyOnLoad(Success);
 
         }
 

@@ -18,11 +18,8 @@ public class SaveGame : MonoBehaviour
         
     }
     
-    private void OnClick()
-    {
-        Debug.Log("Button Clicked.SAVE.");
-        /* if (System.IO.File.Exists(Application.dataPath + "/save.txt"))
-            System.IO.File.Delete(Application.dataPath + "/save.txt");*/
+    private void save(){
+
         UnityChanPosition = UnityChan.GetComponent<Transform>().position;
         FileStream fs = new FileStream(Application.persistentDataPath + "/save.txt", FileMode.Create);
         StreamWriter sw = new StreamWriter(fs);
@@ -33,6 +30,15 @@ public class SaveGame : MonoBehaviour
         sw.WriteLine(SceneManager.GetActiveScene().name);
         sw.Close();
         fs.Close();
+
+    }
+    private void OnClick()
+    {
+        Debug.Log("Button Clicked.SAVE.");
+        /* if (System.IO.File.Exists(Application.dataPath + "/save.txt"))
+            System.IO.File.Delete(Application.dataPath + "/save.txt");*/
+        
+        save();
         GameObject.Destroy(GameObject.Find("Camera2"));
         GameObject.Destroy(GameObject.Find("VirtualJoystick"));
         GameObject.Destroy(GameObject.Find("Coin"));

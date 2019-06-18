@@ -23,6 +23,7 @@ public class AnimateControl : MonoBehaviour
         joystick = BackgroundImage.GetComponent<VirtualJoystick>();
         joystick2 = BackgroundImage2.GetComponent<VirtualJoystick2>();
         UnityChanSelf = this.GetComponent<Animator>();
+        Debug.Log("HELO");
     }
     // Update is called once per frame
     void Update()
@@ -35,6 +36,7 @@ public class AnimateControl : MonoBehaviour
         dir = rotation * dir;
         if (dir.x != 0 && dir.z != 0){
             WalkF_bool = true;
+            //Debug.Log("WTF= =");
             this.transform.Translate(dir.normalized * Time.deltaTime * speed, Space.World);
             qua = Quaternion.LookRotation(dir.normalized);//※  將Vector3型別轉換四元數型別
             this.transform.rotation = Quaternion.Lerp(this.transform.rotation, qua, Time.deltaTime * smoothing);//四元數的插值，實現平滑過渡

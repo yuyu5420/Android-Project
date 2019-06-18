@@ -15,6 +15,8 @@ public class ButtonMap: MonoBehaviour
     public GameObject pause;
     public GameObject set;
     public GameObject btn;
+    public GameObject coinsound;
+
 
     void Start()
     {
@@ -31,6 +33,7 @@ public class ButtonMap: MonoBehaviour
         controller.SetActive(true);
         FB.SetActive(true);
         btn.SetActive(true);
+        coinsound.SetActive(true);
         //set.SetActive(true);
         //pause.SetActive(true);
         Time.timeScale = 1;
