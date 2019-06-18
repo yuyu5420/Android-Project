@@ -1,27 +1,43 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FireSpread : MonoBehaviour
 {
     public float spreadTimeSec;
     public int type;    
     public float gapPixel;
+    public bool isTemplate;
     private int direction;
     private int isDuplicated;
     private Vector3 selfPosition;
     private Quaternion selfRotation;
     private double createTime;
+
+    public bool isActive;
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(this);
         isDuplicated = 0;
         selfPosition = this.GetComponent<Transform>().position;
         selfRotation = this.GetComponent<Transform>().rotation;
-        createTime = Time.realtimeSinceStartup;
+        createTime = Time.realtimeSinceStartup;       
+        
+        this.GetComponent<Transform>().position = selfPosition;
+        SceneManager.activeSceneChanged += ChangedActiveScene;
+        Debug.Log("Firrrrre");
         
     }
-
+    public void setTime(double t)
+    {
+        createTime = t;
+    }
+    public void setAct(bool act)
+    {
+        isActive = act;
+    }
     void OnTriggerEnter(Collider collision)
     {
         Debug.Log(collision.gameObject.name);
@@ -32,15 +48,18 @@ public class FireSpread : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(isTemplate || SceneManager.GetActiveScene().name == "SceneMenu") {
+         createTime = Time.realtimeSinceStartup;
+            return;
+        }
         // Grow the fire in the X & Y directions
         //transform.localScale += new Vector3(Time.deltaTime/ speed, Time.deltaTime/ speed, 0f);
 
         if( isDuplicated < 4 && Time.realtimeSinceStartup > createTime + spreadTimeSec) {
             
             
-            //Debug.Log("Firrrrre");
-            FireSpread newFire;
+            
+            
             Vector3 newPosition = this.setNewPosition(isDuplicated);;
             Vector3[] dir = new Vector3[4]{
                 transform.TransformDirection(Vector3.right),
@@ -48,8 +67,10 @@ public class FireSpread : MonoBehaviour
                 transform.TransformDirection(Vector3.left),
                 transform.TransformDirection(Vector3.back)};
 
-            if(Physics.OverlapSphere(newPosition, 1).Length <= 0 && !Physics.Raycast(selfPosition, dir[isDuplicated], gapPixel)) 
-                Instantiate(GameObject.Find("Fire"), newPosition, selfRotation);
+            if(Physics.OverlapSphere(newPosition, 1).Length <= 0 && !Physics.Raycast(selfPosition, dir[isDuplicated], gapPixel)) {
+                GameObject newFire = Instantiate(GameObject.Find("Fire"), newPosition, selfRotation);
+                newFire.GetComponent<FireSpread>().isActive = this.isActive;
+            }
             
             isDuplicated++;
                
@@ -82,4 +103,24 @@ public class FireSpread : MonoBehaviour
         }
         return newPosition;
     }
+
+    void ChangedActiveScene(Scene cur, Scene nxt)
+    {
+       
+        if(nxt.name == "SceneMenu")
+            Destroy(this);
+        
+            
+        string curName = cur.name;
+        Vector3 newPosition = this.GetComponent<Transform>().position;
+        if(isActive)
+            newPosition.y -= 20f;
+        else
+            newPosition.y += 20f;
+        this.GetComponent<Transform>().position = newPosition;
+        selfPosition = this.GetComponent<Transform>().position;
+        isActive = !isActive;
+            
+    }
+    
 }

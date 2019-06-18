@@ -14,7 +14,11 @@ public class UnityChanControl : MonoBehaviour
     public GameObject BackgroundImage2;
     public float speed;
     public float smoothing;
-    public float fireCollideDelay;
+    public float fireImmuneFrame;
+    public float fireBounceDistance;
+    public float fireWallMedium;
+    public int Coin_save;
+    private float fireCollideDelay;
     public int saveInterval = 30;
     private Vector3 UnityChanPosition;
     private VirtualJoystick joystick;
@@ -25,7 +29,14 @@ public class UnityChanControl : MonoBehaviour
     private int hpcnt;
     private string floor;
     private double last;
+    private int coins_number;
+    public GameObject Success;
     public GameObject coinsound;
+    public GameObject CoinText;
+    public float fire1StartSec;
+    public float fire2StartSec;
+    private float stageTriggerTime;
+    private bool isStageStarted;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,13 +49,14 @@ public class UnityChanControl : MonoBehaviour
             this.transform.position = new Vector3(Convert.ToSingle(sr.ReadLine()), Convert.ToSingle(sr.ReadLine()), Convert.ToSingle(sr.ReadLine()));
             this.transform.rotation = QuaternionParse(sr.ReadLine());
             floor = sr.ReadLine();
+            Coin_save = Convert.ToInt32(sr.ReadLine());
             if (floor == "SceneMap2" && SceneManager.GetActiveScene().name == "SceneMap") SceneManager.LoadScene("SceneMap2");
 
             sr.Close();
             fs.Close();
             Debug.Log("read");
         }
-
+        
         joystick = BackgroundImage.GetComponent<VirtualJoystick>();
         joystick2 = BackgroundImage2.GetComponent<VirtualJoystick2>();
         MainCamera.GetComponent<Transform>().rotation = this.transform.rotation;
@@ -61,6 +73,8 @@ public class UnityChanControl : MonoBehaviour
         };
         hpcnt = 2;
         fireCollideDelay = -1;
+        coins_number = 0;
+        isStageStarted = false;
     }
 
     // Update is called once per frame
@@ -117,10 +131,11 @@ public class UnityChanControl : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
-        Debug.Log(collision.gameObject.name);
+       // Debug.Log(collision.gameObject.name);
        if(collision.gameObject.name == "Coin(Clone)"){ 
-           Instantiate(coinsound, UnityChanPosition, Quaternion.identity); 
-           Destroy(collision.gameObject);
+            Destroy(collision.gameObject);
+            Instantiate(coinsound, UnityChanPosition, Quaternion.identity); 
+            coins_number++;
          }
         else if (collision.gameObject.name == "Boxshelf" && SceneManager.GetActiveScene().name == "SceneMap")
         {
@@ -146,7 +161,7 @@ public class UnityChanControl : MonoBehaviour
 
             SceneManager.LoadScene("SceneMap2");
             GameObject.Find("JoystickImage").GetComponent<Image>().rectTransform.anchoredPosition = Vector3.zero;
-            this.transform.position = new Vector3(-22f, UnityChanPosition.y, 110f);
+            this.transform.position = new Vector3(-22f, UnityChanPosition.y, 113f);
             this.transform.rotation = Quaternion.Euler(0f, 155.5f, 0f);
             MainCamera.GetComponent<Transform>().rotation = this.transform.rotation;
             MainCamera.GetComponent<Transform>().eulerAngles = new Vector3(20.0f, MainCamera.GetComponent<Transform>().eulerAngles.y, MainCamera.GetComponent<Transform>().eulerAngles.z);
@@ -188,20 +203,60 @@ public class UnityChanControl : MonoBehaviour
             MainCamera.GetComponent<Transform>().position = CameraFollowVector;
             MainCamera.GetComponent<Transform>().Translate(Vector3.back * 5);
         }
-        else if (fireCollideDelay == -1 && hpcnt >= 0 && (collision.gameObject.name == "Fire" || collision.gameObject.name == "Fire(Clone)"))
+         else if (collision.gameObject.name == "goal")
         {
-            fireCollideDelay = 60;
+            Success.SetActive(true);
+            Time.timeScale = 0;
+            CoinText.GetComponent<Text>().text = Convert.ToString(coins_number);
+            Coin_save += coins_number;
+
+       }
+         else if(fireCollideDelay == -1  && (collision.gameObject.name == "Fire" || collision.gameObject.name == "Fire(Clone)"))
+        {
+            fireCollideDelay = fireImmuneFrame;
             GameObject.Find("JoystickImage").GetComponent<Image>().rectTransform.anchoredPosition = Vector3.zero;
             Debug.Log("on Fire!");
-            hp[hpcnt--].gameObject.SetActive(false);
+            if(hpcnt != -1)
+                hp[hpcnt--].gameObject.SetActive(false);
             Vector3 firePosition = collision.gameObject.GetComponent<Transform>().position;
-
-            this.transform.position = Vector3.LerpUnclamped(firePosition, this.transform.position, 2.5f);
-            this.transform.position = new Vector3(this.transform.position.x, UnityChanPosition.y, this.transform.position.z);
+            Vector3 nextPosition = Vector3.LerpUnclamped(firePosition, this.transform.position, fireBounceDistance);
+            //nextPosition.y = new Vector3(nextPosition.x, UnityChanPosition.y, nextPosition.z);
+            nextPosition.y = UnityChanPosition.y;
+            RaycastHit hitInfo;
+            if(Physics.Linecast(this.transform.position, nextPosition, out hitInfo)) {
+                nextPosition = Vector3.LerpUnclamped(hitInfo.point, this.transform.position, fireWallMedium);    
+            }
+            //this.transform.position = Vector3.LerpUnclamped(firePosition, this.transform.position, 2.5f);
+            
+            
+            //this.transform.position = new Vector3(this.transform.position.x, UnityChanPosition.y, this.transform.position.z);
+            this.transform.position = nextPosition;
             UnityChanPosition = this.GetComponent<Transform>().position;
             CameraFollowVector = new Vector3(UnityChanPosition.x, 3.2f, UnityChanPosition.z);
             MainCamera.GetComponent<Transform>().position = CameraFollowVector;
             MainCamera.GetComponent<Transform>().Translate(Vector3.back * 5);
+        }
+        else if(!isStageStarted && collision.gameObject.name == "Stage1")
+        {
+            
+            isStageStarted = true;
+            Debug.Log("Stage 1 Start!!");
+            Vector3 fire1Position = new Vector3(46.77003f, -1.98f, 117.75f);
+            GameObject fire1 = Instantiate(GameObject.Find("Fire"), fire1Position, GameObject.Find("Fire").GetComponent<Transform>().rotation);
+            fire1.GetComponent<FireSpread>().spreadTimeSec = 5;
+            fire1.GetComponent<FireSpread>().gapPixel = 3;
+            fire1.GetComponent<FireSpread>().setTime(Time.realtimeSinceStartup);
+            fire1.GetComponent<FireSpread>().isTemplate = false;
+            fire1.GetComponent<FireSpread>().isActive = true;
+
+            Vector3 fire2Position = new Vector3(-11.7f, -21.98f, 102.1f);
+            GameObject fire2 = Instantiate(GameObject.Find("Fire"), fire2Position, GameObject.Find("Fire").GetComponent<Transform>().rotation);
+            fire2.GetComponent<FireSpread>().spreadTimeSec = 5;
+            fire2.GetComponent<FireSpread>().gapPixel = 3;
+            fire2.GetComponent<FireSpread>().setTime(Time.realtimeSinceStartup);
+            fire2.GetComponent<FireSpread>().isTemplate = false;
+            fire2.GetComponent<FireSpread>().isActive = false;
+            //GameObject.Find("Stage1").SetActive(false);
         }
 
     }

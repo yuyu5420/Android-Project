@@ -21,6 +21,7 @@ public class GameObjectManager : MonoBehaviour
     public GameObject button;
     public GameObject coinsound;
     public GameObject Success;
+    public GameObject cube1, cube2;
 
 
     void Awake () {
@@ -40,6 +41,8 @@ public class GameObjectManager : MonoBehaviour
             DontDestroyOnLoad(Pause);
              DontDestroyOnLoad(coinsound);
              DontDestroyOnLoad(Success);
+             DontDestroyOnLoad(cube1);
+             DontDestroyOnLoad(cube2);
 
         }
 

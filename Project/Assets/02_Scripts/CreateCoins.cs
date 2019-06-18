@@ -16,7 +16,7 @@ public class CreateCoins : MonoBehaviour
         float Z = UnityChanPosition.z + Random.Range(-15.0F, 15.0F);
         Vector3 A = new Vector3(X, (float)-4.5 , Z);
         Instantiate(GameObject.Find("Coin"), A, transform.rotation);
-        Debug.Log("created");
+        //Debug.Log("created");
         this.Invoke("Create", 3f);
     }
     
