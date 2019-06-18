@@ -34,6 +34,7 @@ public class ButtonMap: MonoBehaviour
         FB.SetActive(true);
         btn.SetActive(true);
         coinsound.SetActive(true);
+         PlayerPrefs.SetString("step", "0");
         //set.SetActive(true);
         //pause.SetActive(true);
         Time.timeScale = 1;

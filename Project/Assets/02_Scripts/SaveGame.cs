@@ -43,13 +43,27 @@ public class SaveGame : MonoBehaviour
         save();
         GameObject.Destroy(GameObject.Find("Camera2"));
         GameObject.Destroy(GameObject.Find("VirtualJoystick"));
+        GameObject.Destroy(GameObject.Find("VirtualJoystick (1)"));
         GameObject.Destroy(GameObject.Find("Coin"));
         GameObject.Destroy(GameObject.Find("FB"));
         GameObject.Destroy(GameObject.Find("unitychan"));
-        GameObject.Destroy(GameObject.Find("Setting"));
+        GameObject.Destroy(GameObject.Find("Facebook"));
         GameObject.Destroy(GameObject.Find("Pause"));
+        GameObject.Destroy(GameObject.Find("CoinSound"));
+        GameObject.Destroy(GameObject.Find("Fire"));
+        GameObject.Destroy(GameObject.Find("Success"));
+        GameObject.Destroy(GameObject.Find("status"));
+        GameObject.Destroy(GameObject.Find("Cube"));
+        GameObject.Destroy(GameObject.Find("Cube (1)"));
+        GameObject.Destroy(GameObject.Find("FireAttackSound"));
+        GameObject.Destroy(GameObject.Find("LoseSound"));
+        GameObject.Destroy(GameObject.Find("WinSound"));
+        GameObject.Destroy(GameObject.Find("goal1"));
+        GameObject.Destroy(GameObject.Find("goal2"));
+        GameObject.Destroy(GameObject.Find("goal3"));
         GameObject.Destroy(GameObject.Find("GameController"));
-        Application.Quit();
+        SceneManager.LoadScene("SceneMenu");
+        //Application.Quit();
     }
 
 }
