@@ -123,6 +123,7 @@ public class UnityChanControl : MonoBehaviour
             sw.WriteLine(transform.position.z);
             sw.WriteLine(GetComponent<Transform>().rotation);
             sw.WriteLine(SceneManager.GetActiveScene().name);
+            sw.WriteLine(RealGold.GetComponent<Text>().text);
             sw.Close();
             fs.Close();
             Debug.Log("save");
@@ -211,7 +212,7 @@ public class UnityChanControl : MonoBehaviour
             Time.timeScale = 0;
             CoinText.GetComponent<Text>().text = Convert.ToString(coins_number);
             Coin_save += coins_number;
-            RealGold..GetComponent<Text>().text = Coin_save;
+            RealGold.GetComponent<Text>().text = Coin_save;
 
        }
          else if(fireCollideDelay == -1  && (collision.gameObject.name == "Fire" || collision.gameObject.name == "Fire(Clone)"))

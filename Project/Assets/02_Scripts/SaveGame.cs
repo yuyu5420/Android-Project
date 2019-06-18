@@ -9,6 +9,7 @@ public class SaveGame : MonoBehaviour
 {
     private Vector3 UnityChanPosition;
     public GameObject UnityChan;
+    public GameObject RealGold;
     
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class SaveGame : MonoBehaviour
         sw.WriteLine(UnityChanPosition.z);
         sw.WriteLine(UnityChan.GetComponent<Transform>().rotation);
         sw.WriteLine(SceneManager.GetActiveScene().name);
+        sw.WriteLine(RealGold.GetComponent<Text>().text);
         sw.Close();
         fs.Close();
 
