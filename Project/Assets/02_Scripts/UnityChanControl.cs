@@ -129,7 +129,8 @@ public class UnityChanControl : MonoBehaviour
 
             SceneManager.LoadScene("SceneMap2");
             GameObject.Find("JoystickImage").GetComponent<Image>().rectTransform.anchoredPosition = Vector3.zero;
-            this.transform.position = new Vector3(-4f, UnityChanPosition.y, -28.7f);
+            this.transform.position = new Vector3(-11.77f, UnityChanPosition.y, -27.7f);
+            this.transform.rotation = Quaternion.Euler(0f, 96.5f, 0f);
             MainCamera.GetComponent<Transform>().rotation = this.transform.rotation;
             MainCamera.GetComponent<Transform>().eulerAngles = new Vector3(20.0f, MainCamera.GetComponent<Transform>().eulerAngles.y, MainCamera.GetComponent<Transform>().eulerAngles.z);
 
@@ -144,7 +145,8 @@ public class UnityChanControl : MonoBehaviour
             PlayerPrefs.SetString("step", "1");
             SceneManager.LoadScene("SceneMap");
             GameObject.Find("JoystickImage").GetComponent<Image>().rectTransform.anchoredPosition = Vector3.zero;
-            this.transform.position = new Vector3(-4f, UnityChanPosition.y, -28.7f);
+            this.transform.position = new Vector3(-11.77f, UnityChanPosition.y, -27.7f);
+            this.transform.rotation = Quaternion.Euler(0f, 96.5f, 0f);
             MainCamera.GetComponent<Transform>().rotation = this.transform.rotation;
             MainCamera.GetComponent<Transform>().eulerAngles = new Vector3(20.0f, MainCamera.GetComponent<Transform>().eulerAngles.y, MainCamera.GetComponent<Transform>().eulerAngles.z);
 

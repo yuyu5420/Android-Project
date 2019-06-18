@@ -23,7 +23,7 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
         Vector2 pos;
         if(RectTransformUtility.ScreenPointToLocalPointInRectangle(bgImg.rectTransform, ped.position, ped.pressEventCamera,out pos))
         {
-            PlayerPrefs.SetString("step", "0");
+            //PlayerPrefs.SetString("step", "0");
             pos.x = (pos.x / bgImg.rectTransform.sizeDelta.x);
             pos.y = (pos.y / bgImg.rectTransform.sizeDelta.y);
             inputVector = new Vector3(pos.x *2, 0, pos.y *2);
@@ -42,21 +42,21 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
     }
     public float Horizontal()
     {
-        if (PlayerPrefs.GetString("step") == "1")
+        /*/if (PlayerPrefs.GetString("step") == "1")
         {
             
             return 0;
-        }
+        }*/
             return inputVector.x;
  
     }
     public float Vertical()
     {
-        if (PlayerPrefs.GetString("step") == "1")
+       /*  if (PlayerPrefs.GetString("step") == "1")
         {
 
             return 0;
-        }
+        }*/
         return inputVector.z;
     
     }
