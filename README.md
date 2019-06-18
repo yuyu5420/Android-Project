@@ -13,7 +13,7 @@ Escape++
 
 *  黃瑞連 - Character Movement、FB Connection、Sound Effect、UI Design、Game State Management.
 *  王泓暐 - Map Construction.
-*  邱子晏 - Fire Simulation.
-*  楊尚臻 - Scene Switch、 Character Collision、Saving Game Status.
+*  邱子晏 - Fire Simulation、Game State Management.
+*  楊尚臻 - Scene Switch、 Character Collision、Saving Game Status、Game State Management.
 
 
