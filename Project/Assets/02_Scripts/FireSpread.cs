@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class FireSpread : MonoBehaviour
 {
     public float spreadTimeSec;
-    public int type;    
+    public int type;
     public float gapPixel;
     public bool isTemplate;
     private int direction;
@@ -23,12 +23,12 @@ public class FireSpread : MonoBehaviour
         isDuplicated = 0;
         selfPosition = this.GetComponent<Transform>().position;
         selfRotation = this.GetComponent<Transform>().rotation;
-        createTime = Time.realtimeSinceStartup;       
-        
+        createTime = Time.realtimeSinceStartup;
+
         this.GetComponent<Transform>().position = selfPosition;
-        SceneManager.activeSceneChanged += ChangedActiveScene;
+        SceneManager.sceneLoaded += OnSceneLoaded;
         Debug.Log("Firrrrre");
-        
+
     }
     public void setTime(double t)
     {
@@ -41,39 +41,43 @@ public class FireSpread : MonoBehaviour
     void OnTriggerEnter(Collider collision)
     {
         Debug.Log(collision.gameObject.name);
-        if(collision.gameObject.name == "Fire(Clone)"){
+        if (collision.gameObject.name == "Fire(Clone)")
+        {
             Destroy(collision.gameObject);
         }
     }
     // Update is called once per frame
     void Update()
     {
-        if(isTemplate || SceneManager.GetActiveScene().name == "SceneMenu") {
-         createTime = Time.realtimeSinceStartup;
+        if (isTemplate || SceneManager.GetActiveScene().name == "SceneMenu")
+        {
+            createTime = Time.realtimeSinceStartup;
             return;
         }
         // Grow the fire in the X & Y directions
         //transform.localScale += new Vector3(Time.deltaTime/ speed, Time.deltaTime/ speed, 0f);
 
-        if( isDuplicated < 4 && Time.realtimeSinceStartup > createTime + spreadTimeSec) {
-            
-            
-            
-            
-            Vector3 newPosition = this.setNewPosition(isDuplicated);;
+        if (isDuplicated < 4 && Time.realtimeSinceStartup > createTime + spreadTimeSec)
+        {
+
+
+
+
+            Vector3 newPosition = this.setNewPosition(isDuplicated); ;
             Vector3[] dir = new Vector3[4]{
                 transform.TransformDirection(Vector3.right),
                 transform.TransformDirection(Vector3.forward),
                 transform.TransformDirection(Vector3.left),
                 transform.TransformDirection(Vector3.back)};
 
-            if(Physics.OverlapSphere(newPosition, 1).Length <= 0 && !Physics.Raycast(selfPosition, dir[isDuplicated], gapPixel)) {
+            if (Physics.OverlapSphere(newPosition, 1).Length <= 0 && !Physics.Raycast(selfPosition, dir[isDuplicated], gapPixel))
+            {
                 GameObject newFire = Instantiate(GameObject.Find("Fire"), newPosition, selfRotation);
                 newFire.GetComponent<FireSpread>().isActive = this.isActive;
             }
-            
+
             isDuplicated++;
-               
+
         }
 
     }
@@ -89,38 +93,54 @@ public class FireSpread : MonoBehaviour
         switch (dir)
         {
             case 0:
-            newPosition.x += gapPixel;
-            break;
+                newPosition.x += gapPixel;
+                break;
             case 1:
-            newPosition.z += gapPixel;
-            break;
+                newPosition.z += gapPixel;
+                break;
             case 2:
-            newPosition.x -= gapPixel;
-            break;
+                newPosition.x -= gapPixel;
+                break;
             case 3:
-            newPosition.z -= gapPixel;          
-            break;  
+                newPosition.z -= gapPixel;
+                break;
         }
         return newPosition;
     }
 
-    void ChangedActiveScene(Scene cur, Scene nxt)
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-       
-        if(nxt.name == "SceneMenu")
-            Destroy(this);
-        
-            
-        string curName = cur.name;
+        if (scene.name == "SceneMenu")
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+            Destroy(gameObject);
+        }
+        if (scene.name == "SceneMap")
+        {
+            if (transform != null && transform.name == "Fire")
+            {
+                transform.position = new Vector3(transform.position.x, -22, transform.position.z);
+                isActive = false;
+            }
+        }
+        if (transform != null && scene.name == "SceneMap2")
+        {
+            if (transform != null && transform.name == "Fire")
+            {
+                transform.position = new Vector3(transform.position.x, -2, transform.position.z);
+                isActive = true;
+            }
+        }
+
         Vector3 newPosition = this.GetComponent<Transform>().position;
-        if(isActive)
+        if (isActive)
             newPosition.y -= 20f;
         else
             newPosition.y += 20f;
         this.GetComponent<Transform>().position = newPosition;
         selfPosition = this.GetComponent<Transform>().position;
         isActive = !isActive;
-            
+
     }
-    
+
 }

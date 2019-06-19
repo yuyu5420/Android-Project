@@ -90,17 +90,17 @@ public class FacebookScript : MonoBehaviour {
         }
         CheckLogin();
     }
-  
+
     #endregion
- 
+
     public void FacebookShare()
     {
-        FB.ShareLink(new System.Uri("https://resocoder.com"), "Check it out!",
-            "Good programming tutorials lol!",
-            new System.Uri("https://resocoder.com/wp-content/uploads/2017/01/logoRound512.png"));
+        FB.ShareLink(new System.Uri("http://cps.imis.ncku.edu.tw/"), "Check it out!",
+            "lol!",
+            new System.Uri("https://i.imgur.com/FA4h9AS.png"));
     }
-    
- 
+
+
     #region Inviting
     public void FacebookGameRequest()
     {

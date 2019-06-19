@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1229,6 +1229,7 @@ GameObject:
   - component: {fileID: 319231612}
   - component: {fileID: 319231611}
   - component: {fileID: 319231610}
+  - component: {fileID: 319231608}
   m_Layer: 5
   m_Name: restart
   m_TagString: Untagged
@@ -1255,6 +1256,20 @@ RectTransform:
   m_AnchoredPosition: {x: -110, y: -145}
   m_SizeDelta: {x: 67, y: 73}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &319231608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319231606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86013bffc9e6b2440b1593f416850700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitychan: {fileID: 814136017}
+  goldText: {fileID: 577057659}
 --- !u!114 &319231610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1719,7 +1734,6 @@ GameObject:
   - component: {fileID: 454271299}
   - component: {fileID: 454271298}
   - component: {fileID: 454271297}
-  - component: {fileID: 454271296}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1727,14 +1741,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &454271296
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 454271295}
-  m_Enabled: 1
 --- !u!124 &454271297
 Behaviour:
   m_ObjectHideFlags: 0
@@ -3324,6 +3330,7 @@ MonoBehaviour:
   LoseSound: {fileID: 266883539}
   WinSound: {fileID: 1989358910}
   CoinText: {fileID: 577057659}
+  TimeText: {fileID: 1397871158}
   fire1StartSec: 0
   fire2StartSec: 0
 --- !u!114 &814136019
@@ -3971,6 +3978,7 @@ GameObject:
   - component: {fileID: 998602688}
   - component: {fileID: 998602687}
   - component: {fileID: 998602686}
+  - component: {fileID: 998602689}
   m_Layer: 5
   m_Name: next
   m_TagString: Untagged
@@ -4079,6 +4087,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998602684}
   m_CullTransparentMesh: 0
+--- !u!114 &998602689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998602684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f58a07683734524998d9408ae989775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1002843854
 GameObject:
   m_ObjectHideFlags: 0
@@ -5975,9 +5995,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1652784949999524, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1911683160194432, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878652760548056, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4521404770085940, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6019,14 +6047,6 @@ PrefabInstance:
     - target: {fileID: 198321560017527566, guid: 89956e675b749204c8e10395ce2b5fb9,
         type: 3}
       propertyPath: prewarm
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1652784949999524, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1878652760548056, guid: 89956e675b749204c8e10395ce2b5fb9, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 199147534815207922, guid: 89956e675b749204c8e10395ce2b5fb9,

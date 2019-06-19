@@ -62,8 +62,7 @@ public class SaveGame : MonoBehaviour
         GameObject.Destroy(GameObject.Find("goal2"));
         GameObject.Destroy(GameObject.Find("goal3"));
         GameObject.Destroy(GameObject.Find("GameController"));
-        SceneManager.LoadScene("SceneMenu");
-        //Application.Quit();
+        Application.Quit();
     }
 
 }
