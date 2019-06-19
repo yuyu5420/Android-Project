@@ -50,7 +50,7 @@ public class FacebookScript : MonoBehaviour {
     }
     public void FacebookLogin()
     {
-         var permissions = new List<string>() { "public_profile", "email", "user_friends" };
+         var permissions = new List<string>() { "public_profile", "email" };
         FB.LogInWithReadPermissions(permissions, AuthCallBack);
         CheckLogin();
     }
