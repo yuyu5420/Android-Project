@@ -265,6 +265,9 @@ public class UnityChanControl : MonoBehaviour
                 GetComponent<Animator>().Play("DAMAGED01");
                 LoseSound.GetComponent<AudioSource>().Play();
                 PlayerPrefs.SetString("step", "0");
+                GameObject.Find("goal1").GetComponent<BoxCollider>().isTrigger = false;
+                GameObject.Find("goal2").GetComponent<BoxCollider>().isTrigger = false;
+                GameObject.Find("goal3").GetComponent<BoxCollider>().isTrigger = false;
                 //string scene = SceneManager.GetActiveScene().name;
                 GameObject.Destroy(GameObject.Find("Camera2"));
                 GameObject.Destroy(GameObject.Find("VirtualJoystick"));
