@@ -16,6 +16,7 @@ public class GameObjectManager : MonoBehaviour
    public GameObject FB;
    public GameObject UnityChan;
    public GameObject Setting;
+   public GameObject Smap;
     public GameObject Coin;
     public GameObject Pause;
     public GameObject button;
@@ -32,7 +33,7 @@ public class GameObjectManager : MonoBehaviour
             DontDestroyOnLoad(MainCamera);
             DontDestroyOnLoad(Coin);
             DontDestroyOnLoad(button);
-            DontDestroyOnLoad(Coin);
+            DontDestroyOnLoad(Smap);
             DontDestroyOnLoad(JoyStick);
             DontDestroyOnLoad(JoyStick2);
             DontDestroyOnLoad(FB);
@@ -52,5 +53,6 @@ public class GameObjectManager : MonoBehaviour
 
         }
 
-}
+    }
+    
 }

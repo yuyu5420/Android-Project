@@ -12,7 +12,7 @@ public class UnityChanControl : MonoBehaviour
     public GameObject MainCamera;
     public GameObject BackgroundImage;
     public GameObject BackgroundImage2;
-    public GameObject GameControl;
+    public GameObject GameControl, Hpeffect;
     public float speed;
     public float smoothing;
     public float fireImmuneFrame;
@@ -28,7 +28,7 @@ public class UnityChanControl : MonoBehaviour
     private VirtualJoystick2 joystick2;
     private Vector3 CameraFollowVector;
     private Quaternion qua, rotation;
-    private Transform[] hp;
+    private GameObject[] hp;
     private int hpcnt;
     private string floor;
     private double last;
@@ -74,10 +74,10 @@ public class UnityChanControl : MonoBehaviour
         CameraFollowVector = new Vector3(UnityChanPosition.x, 3.2f, UnityChanPosition.z);
         MainCamera.GetComponent<Transform>().position = CameraFollowVector;
         MainCamera.GetComponent<Transform>().Translate(Vector3.back * 5);
-        hp = new Transform[] {
-            gameObject.transform.Find("Cube"),
-            gameObject.transform.Find("Cube (1)"),
-            gameObject.transform.Find("Cube (2)"),
+        hp = new GameObject[] {
+            GameObject.Find("Heart"),
+            GameObject.Find("Heart (1)"),
+            GameObject.Find("Heart (2)"),
         };
         hpcnt = 2;
         fireCollideDelay = -1;
@@ -85,10 +85,13 @@ public class UnityChanControl : MonoBehaviour
         isStageStarted = false;
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
-
+    void finished(){
+        Hpeffect.SetActive(false);
+    }
     // Update is called once per frame
     void Update()
     {
+        
         if (PlayerPrefs.GetString("step") != "1" && floor == "SceneMap2" && SceneManager.GetActiveScene().name == "SceneMap") SceneManager.LoadScene("SceneMap2");
         Vector3 dir = Vector3.zero;
         Vector3 dir2 = Vector3.zero;
@@ -97,18 +100,18 @@ public class UnityChanControl : MonoBehaviour
         dir2.z = joystick.Vertical();
 
         dir.x = joystick2.Horizontal();
-        dir.z = joystick2.Vertical();
+        dir.z = 0;
 
         //Debug.Log(this.transform.eulerAngles.y);
         rotation = Quaternion.Euler(0, this.transform.eulerAngles.y, 0);
-        dir = rotation * dir;
-        if (dir.x != 0 && dir.z != 0)
+        //dir = rotation * dir;
+        if (dir.x != 0)
         {
 
             //this.transform.Translate(dir.normalized * Time.deltaTime * speed, Space.World);
             qua = Quaternion.LookRotation(dir.normalized);//※  將Vector3型別轉換四元數型別
             //this.transform.rotation = Quaternion.Lerp(this.transform.rotation, qua, Time.deltaTime * smoothing);//四元數的插值，實現平滑過渡
-            MainCamera.GetComponent<Transform>().rotation = Quaternion.Lerp(MainCamera.GetComponent<Transform>().rotation, qua, Time.deltaTime * smoothing);
+            MainCamera.GetComponent<Transform>().rotation = /*Quaternion.Lerp(MainCamera.GetComponent<Transform>().rotation, qua, Time.deltaTime * smoothing) */Quaternion.Euler( MainCamera.GetComponent<Transform>().eulerAngles.x,  MainCamera.GetComponent<Transform>().eulerAngles.y + dir.x *Time.deltaTime * 100,  MainCamera.GetComponent<Transform>().eulerAngles.z);
             MainCamera.GetComponent<Transform>().eulerAngles = new Vector3(20.0f, MainCamera.GetComponent<Transform>().eulerAngles.y, MainCamera.GetComponent<Transform>().eulerAngles.z);
             /*Debug.Log(this.transform.rotation.y);
             Debug.Log(dir.x);
@@ -246,6 +249,8 @@ public class UnityChanControl : MonoBehaviour
             if (hpcnt != -1)
             {
                 hp[hpcnt--].gameObject.SetActive(false);
+                Hpeffect.SetActive(true);
+                this.Invoke("finished", 0.3f);
                 FireAttackSound.GetComponent<AudioSource>().Play();
                 GetComponent<Animator>().Play("DAMAGED00");
             }
