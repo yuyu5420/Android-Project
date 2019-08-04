@@ -2491,6 +2491,8 @@ MonoBehaviour:
   goal1: {fileID: 1225758287}
   goal2: {fileID: 1068478699}
   goal3: {fileID: 1838459454}
+  email: Email Address
+  externalId: External User ID
 --- !u!82 &657127213
 AudioSource:
   m_ObjectHideFlags: 0

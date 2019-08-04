@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01_Scences/SceneMap2.unity
     guid: db99074e9e6cf1342b5060594004e460
+  - enabled: 1
+    path: Assets/01_Scences/OneSignalExampleScene.unity
+    guid: 050179f3927d55941bf409edf35e9c80
   m_configObjects: {}
