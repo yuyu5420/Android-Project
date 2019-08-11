@@ -19,6 +19,7 @@ public class GameObjectManager : MonoBehaviour
    public GameObject UnityChan;
    public GameObject Setting;
    public GameObject Smap;
+   public GameObject dialog;
     public GameObject Coin;
     public GameObject Pause;
     public GameObject button;
@@ -39,6 +40,7 @@ public class GameObjectManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(this);
             DontDestroyOnLoad(MainCamera);
+            DontDestroyOnLoad(dialog);
             DontDestroyOnLoad(Coin);
             DontDestroyOnLoad(button);
             DontDestroyOnLoad(Smap);

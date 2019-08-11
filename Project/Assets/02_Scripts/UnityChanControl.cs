@@ -12,7 +12,7 @@ public class UnityChanControl : MonoBehaviour
     public GameObject MainCamera;
     public GameObject BackgroundImage;
     public GameObject BackgroundImage2;
-    public GameObject GameControl, Hpeffect;
+    public GameObject GameControl, Hpeffect, dialog;
     public float speed;
     public float smoothing;
     public float fireImmuneFrame;
@@ -43,6 +43,7 @@ public class UnityChanControl : MonoBehaviour
     private bool isStageStarted;
     private double timeInit;
     private bool restart = true;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -141,7 +142,7 @@ public class UnityChanControl : MonoBehaviour
             last = Time.realtimeSinceStartup;
         }
     }
-
+    
     void OnTriggerEnter(Collider collision)
     {
         // Debug.Log(collision.gameObject.name);
@@ -153,6 +154,15 @@ public class UnityChanControl : MonoBehaviour
 
             Coin_save++;
             RealGold.GetComponent<Text>().text = Convert.ToString(Coin_save);
+        }
+         if (collision.gameObject.name == "MobileMaleFree1")//character boy
+        {
+            if(Time.timeScale == 1){
+                dialog.SetActive(true);
+                Time.timeScale = 0;
+                Debug.Log("8787878787777");
+            }
+           
         }
         else if (collision.gameObject.name == "Boxshelf" && SceneManager.GetActiveScene().name == "SceneMap")
         {

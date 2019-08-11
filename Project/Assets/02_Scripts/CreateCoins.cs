@@ -7,7 +7,7 @@ public class CreateCoins : MonoBehaviour
     public GameObject UnityChan;
     private Vector3 UnityChanPosition;
     void Start(){
-        this.Invoke("Create", 3f);
+        this.Invoke("Create", 60f);
     }
     void Create()
     {
@@ -17,7 +17,7 @@ public class CreateCoins : MonoBehaviour
         Vector3 A = new Vector3(X, (float)-4.5 , Z);
         Instantiate(GameObject.Find("Coin"), A, transform.rotation);
         //Debug.Log("created");
-        this.Invoke("Create", 3f);
+        this.Invoke("Create", 60f);
     }
     
 }
