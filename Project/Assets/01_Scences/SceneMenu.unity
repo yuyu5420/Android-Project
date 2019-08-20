@@ -6274,6 +6274,9 @@ MonoBehaviour:
   Dialog: {fileID: 1891100053}
   TxtFile: {fileID: 4900000, guid: 74130afb76db2ac4eb2952b0df265afa, type: 3}
   TxtFile2: {fileID: 4900000, guid: f607bc234db57b84c90cc70f2f4a155f, type: 3}
+  TxtFile3: {fileID: 4900000, guid: 3f09c91d2405b8e4b8fbd5ee6dc67ee4, type: 3}
+  TxtFile4: {fileID: 4900000, guid: 6127c4bbe69db4248ba3b7e11ad7cdc7, type: 3}
+  TxtFile5: {fileID: 4900000, guid: 2c319bcdddacafc448103a43e49451ed, type: 3}
   txt: {fileID: 734013296}
 --- !u!1 &1446817610
 GameObject:
